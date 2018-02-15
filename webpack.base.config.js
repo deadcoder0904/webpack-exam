@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const Jarvis = require("webpack-jarvis");
 
 const config = {
   entry: path.resolve(__dirname, "src/app.js"),
@@ -43,9 +44,9 @@ const config = {
       filename: "[name].[contenthash].css"
     }),
     new webpack.EnvironmentPlugin({
-      NODE_ENV: "development"
+      NODE_ENV: "development" // if NODE_ENV is not passed, it defaults to "development"
     })
-  ]
+  ].concat(process.env.JARVIS === "true" ? [new Jarvis()] : [])
 };
 
 module.exports = config;
