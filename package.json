@@ -4,10 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev:watch": "NODE_ENV=development JARVIS=true webpack --watch --config webpack.dev.config.js",
-    "prod:watch": "NODE_ENV=production JARVIS=true webpack --watch --config webpack.prod.config.js",
-    "dev": "NODE_ENV=development webpack --optimize-minimize --config webpack.dev.config.js",
-    "prod": "NODE_ENV=production webpack --optimize-minimize --config webpack.prod.config.js",
+    "dev":
+      "NODE_ENV=development webpack --optimize-minimize --config webpack.dev.config.js",
+    "prod":
+      "NODE_ENV=production webpack --optimize-minimize --config webpack.prod.config.js",
+    "dev:watch": "JARVIS=true npm run dev --watch",
+    "prod:watch": "JARVIS=true npm run prod --watch",
     "stats": "webpack --config webpack.prod.config.js --json > stats.json",
     "clean": "rm -rf dist"
   },
