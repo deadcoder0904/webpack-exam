@@ -1,6 +1,8 @@
+import { map } from "lodash-es";
+
 import "./styles.scss"; // to check SASS works
 
-import _ from "lodash";
+import { sum } from "./math";
 
 console.log("In app.js 💩");
 
@@ -13,6 +15,8 @@ class A {
 new A(); // to check if ES modules work
 
 console.log("Running lodash 🙈");
-_.map([1, 2, 3], n => {
+map([1, 2, 3], n => {
   console.log(n);
 });
+
+console.log(`2 + 5 = ${sum(2, 5)}`);

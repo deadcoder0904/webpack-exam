@@ -4,12 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev:watch":
-      "NODE_ENV=development JARVIS=true webpack-dev-server --open --config webpack.dev.config.js",
-    "prod:watch":
-      "NODE_ENV=production JARVIS=true webpack-dev-server --open --config webpack.prod.config.js",
-    "dev": "NODE_ENV=development webpack --config webpack.dev.config.js",
-    "prod": "NODE_ENV=production webpack --config webpack.prod.config.js",
+    "dev:watch": "NODE_ENV=development JARVIS=true webpack --watch --config webpack.dev.config.js",
+    "prod:watch": "NODE_ENV=production JARVIS=true webpack --watch --config webpack.prod.config.js",
+    "dev": "NODE_ENV=development webpack --optimize-minimize --config webpack.dev.config.js",
+    "prod": "NODE_ENV=production webpack --optimize-minimize --config webpack.prod.config.js",
+    "stats": "webpack --config webpack.prod.config.js --json > stats.json",
     "clean": "rm -rf dist"
   },
   "keywords": [],
@@ -23,13 +22,15 @@
     "css-loader": "^0.28.8",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
-    "lodash": "^4.17.4",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
-    "style-loader": "^0.19.1",
+    "style-loader": "^0.20.1",
+    "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.1",
     "webpack-jarvis": "^0.3.0",
     "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.5"
   }
 }

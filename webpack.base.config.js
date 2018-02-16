@@ -4,7 +4,10 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const Jarvis = require("webpack-jarvis");
 
 const config = {
-  entry: path.resolve(__dirname, "src/app.js"),
+  entry: {
+    vendor: ["lodash-es"],
+    app: path.resolve(__dirname, "src/app.js")
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[hash].js"
