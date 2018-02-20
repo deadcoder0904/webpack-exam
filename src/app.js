@@ -1,4 +1,4 @@
-import { map } from "lodash";
+import map from "lodash-es/map";
 
 import "./styles.scss"; // to check SASS works
 

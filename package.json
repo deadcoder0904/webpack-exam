@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev":
-      "NODE_ENV=development webpack --optimize-minimize --config webpack.dev.config.js",
+    "dev": "NODE_ENV=development webpack --optimize-minimize --config webpack.dev.config.js",
     "prod": "webpack -p --config webpack.prod.config.js",
     "dev:watch": "JARVIS=true npm run dev --watch",
     "prod:watch": "JARVIS=true npm run prod --watch",
@@ -34,6 +33,6 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
-    "lodash": "^4.17.5"
+    "lodash-es": "^4.17.5"
   }
 }

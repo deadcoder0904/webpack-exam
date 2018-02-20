@@ -29,17 +29,14 @@ const config = merge(baseConfig, {
     new ExtractTextPlugin({
       filename: "[name].[contenthash].css"
     }),
-    new LodashModuleReplacementPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       filename: "vendor.min.js"
     }),
+    new LodashModuleReplacementPlugin(),
     new UglifyJsPlugin()
   ]
 });
 
 module.exports = config;
-// 128 kB = 30.8 kB gzip with Plugin + options
-// 152 kB = 38.1 kB gzip without Plugin
-// 125 kB = 30.1 kB gzip with Plugin - options

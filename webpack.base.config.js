@@ -5,7 +5,7 @@ const Jarvis = require("webpack-jarvis");
 
 const config = {
   entry: {
-    vendor: ["lodash"],
+    vendor: ["lodash-es"],
     app: path.resolve(__dirname, "src/app.js")
   },
   output: {
