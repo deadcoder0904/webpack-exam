@@ -32,6 +32,9 @@ const config = merge(baseConfig, {
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
+      minChunks: module => {
+        if (module.resource) return /lodash-es/.test(module.resource);
+      },
       filename: "vendor.min.js"
     }),
     new LodashModuleReplacementPlugin(),
