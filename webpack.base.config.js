@@ -43,10 +43,8 @@ const config = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: "[name].[contenthash].css"
-    }),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: "development" // if NODE_ENV is not passed, it defaults to "development"
+      filename: "[name].[contenthash].css",
+      allChunks: true
     })
   ].concat(process.env.JARVIS === "true" ? [new Jarvis()] : [])
 };

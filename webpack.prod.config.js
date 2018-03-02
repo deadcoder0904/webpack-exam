@@ -4,12 +4,12 @@ const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 const baseConfig = require("./webpack.base.config");
 
 const config = merge(baseConfig, {
+  mode: "production",
   plugins: [
     new CleanWebpackPlugin("dist"),
     new HtmlWebpackPlugin({
@@ -30,16 +30,20 @@ const config = merge(baseConfig, {
       filename: "[name].[contenthash].css"
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      minChunks: module => {
-        if (module.resource) return /lodash-es/.test(module.resource);
-      },
-      filename: "vendor.min.js"
-    }),
-    new LodashModuleReplacementPlugin(),
-    new UglifyJsPlugin()
-  ]
+    new LodashModuleReplacementPlugin()
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          name: "vendor",
+          chunks: "initial",
+          enforce: true
+        }
+      }
+    }
+  }
 });
 
 module.exports = config;

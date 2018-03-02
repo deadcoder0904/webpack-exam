@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const baseConfig = require("./webpack.base.config");
 
 const config = merge(baseConfig, {
+  mode: "development",
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src/index.html")
